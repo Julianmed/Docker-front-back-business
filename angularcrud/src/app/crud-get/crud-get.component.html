@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-md-6 mx-auto mt-5">
+        <div class="card">
+            <div class="card-body ">
+                <div>
+                    <h3 class="text-center">Business</h3>
+                </div>
+                <div>
+                    <table class="table table-striped" *ngIf="businesses.length>0 ; else noBusiness">
+                        <br>
+                        <tbody>
+                            <tr *ngFor="let business of businesses">
+                                <td><p style="font-size: 20px" class="align-self-center float-left">
+                                    Person name: {{business.person_name}} <br>
+                                    Business name: {{business.business_name}} <br>
+                                    Business gst number: {{business.business_gst_number}}
+                                </p>
+                                <button class="btn btn-danger float-right" (click)="remove(business._id)">Delete</button>
+                                <button class="btn float-right mr-3" [routerLink]="['/business/edit/'+business._id]">edit</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <ng-template #noBusiness>
+                        <div class="text-center"> 
+                            <p>Businesses not found</p>
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
